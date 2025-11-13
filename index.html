@@ -40,9 +40,10 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: #ffffff;
-      border-bottom: 1px solid rgba(148,163,184,.3);
-      box-shadow: 0 4px 12px rgba(15,23,42,.06);
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.9);
+      border-bottom: 1px solid rgba(148,163,184,.25);
+      box-shadow: 0 4px 16px rgba(15,23,42,.12);
     }
     .nav {
       display: flex;
@@ -51,13 +52,8 @@
       padding: 10px 0;
       gap: 18px;
     }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
     .nav-logo img {
-      height: 68px;
+      height: 70px;
     }
     .nav-links {
       display: flex;
@@ -241,6 +237,34 @@
       color: var(--text-muted);
     }
 
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(15,23,42,.18);
+      border: 1px solid rgba(15,23,42,.25);
+      background: #020617;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.03);
+    }
+    .gallery-caption {
+      padding: 10px 14px 12px;
+      font-size: 13px;
+      color: #e5e7eb;
+    }
+
     /* ABOUT */
     .about-wrap {
       background: var(--bg);
@@ -345,11 +369,12 @@
 <header>
   <div class="container nav">
     <div class="nav-logo">
-      <!-- Asegúrate de subir un archivo llamado EXACTAMENTE logo-sinter.png -->
+      <!-- Usa tu logo sin fondo con este nombre -->
       <img src="logo-sinter.png" alt="SINTER Logo">
     </div>
     <nav class="nav-links">
       <a href="#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="#galeria" data-i18n="nav.gallery">Galería</a>
       <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
       <a href="#contacto" data-i18n="nav.contact">Contacto</a>
     </nav>
@@ -382,8 +407,8 @@
     </div>
     <div class="hero-card">
       <div class="hero-image">
-        <!-- Usa tu foto del técnico / compresores con este nombre: hero-compresor.jpg -->
-        <img src="hero-compresor.jpg" alt="Técnico revisando unidades exteriores">
+        <!-- Foto del técnico con compresores -->
+        <img src="foto-compresor.jpg" alt="Técnico revisando unidades exteriores">
       </div>
     </div>
   </div>
@@ -421,6 +446,32 @@
           <h3 class="service-title" data-i18n="services.s5.title">Climatización comercial</h3>
           <p class="service-text" data-i18n="services.s5.text">Locales, oficinas y hostelería con respuesta ágil.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria">
+    <div class="container">
+      <h2 class="section-title" data-i18n="gallery.title">Galería</h2>
+      <p class="section-sub" data-i18n="gallery.lead">Algunos ejemplos de trabajos y equipos que instalamos.</p>
+
+      <div class="gallery-grid">
+        <figure class="gallery-item">
+          <!-- Foto del split de aire -->
+          <img src="foto-aire.jpg" alt="Unidad interior de aire acondicionado">
+          <figcaption class="gallery-caption" data-i18n="gallery.g1">Unidades interiores de aire acondicionado tipo split.</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <!-- Foto del técnico con compresores -->
+          <img src="foto-compresor.jpg" alt="Mantenimiento de unidades exteriores">
+          <figcaption class="gallery-caption" data-i18n="gallery.g2">Mantenimiento de unidades exteriores y equipos industriales.</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <!-- Foto de la estufa -->
+          <img src="foto-estufa.jpg" alt="Estufa de leña y pellet instalada en vivienda">
+          <figcaption class="gallery-caption" data-i18n="gallery.g3">Instalación de estufas de leña y pellet para tu hogar.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -479,6 +530,7 @@
   const translations = {
     es: {
       "nav.services": "Servicios",
+      "nav.gallery": "Galería",
       "nav.about": "Nosotros",
       "nav.contact": "Contacto",
       "hero.badge1": "Empresa instaladora habilitada",
@@ -500,6 +552,11 @@
       "services.s4.text": "Montaje profesional de estufas, chimeneas y hogares.",
       "services.s5.title": "Climatización comercial",
       "services.s5.text": "Locales, oficinas y hostelería con respuesta ágil.",
+      "gallery.title": "Galería",
+      "gallery.lead": "Algunos ejemplos de trabajos y equipos que instalamos.",
+      "gallery.g1": "Unidades interiores de aire acondicionado tipo split.",
+      "gallery.g2": "Mantenimiento de unidades exteriores y equipos industriales.",
+      "gallery.g3": "Instalación de estufas de leña y pellet para tu hogar.",
       "about.title": "¿Por qué elegirnos?",
       "about.lead": "Nos encargamos de que tu instalación funcione bien desde el primer día.",
       "about.li1": "Trabajo limpio y ordenado en cada instalación.",
@@ -513,6 +570,7 @@
     },
     en: {
       "nav.services": "Services",
+      "nav.gallery": "Gallery",
       "nav.about": "About",
       "nav.contact": "Contact",
       "hero.badge1": "Certified installer",
@@ -534,6 +592,11 @@
       "services.s4.text": "Professional installation of stoves, fireplaces and hearths.",
       "services.s5.title": "Commercial HVAC",
       "services.s5.text": "Solutions for shops, offices and hospitality with agile support.",
+      "gallery.title": "Gallery",
+      "gallery.lead": "Some examples of work and equipment we install.",
+      "gallery.g1": "Indoor split air conditioning units.",
+      "gallery.g2": "Maintenance of outdoor units and industrial equipment.",
+      "gallery.g3": "Wood and pellet stoves installed in homes.",
       "about.title": "Why choose us?",
       "about.lead": "We make sure your installation works well from day one.",
       "about.li1": "Clean and tidy work on every installation.",
