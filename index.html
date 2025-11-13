@@ -201,48 +201,76 @@
     Email: sinterclima@gmail.com | Tel: 672 938 817
 </footer>
 
-<script>
-    function toggleLang() {
-        const es = document.documentElement.lang === "es";
-        document.documentElement.lang = es ? "en" : "es";
-
-        if (!es) {
-            hero-title.textContent = "Soluciones profesionales de climatización";
-            hero-sub.textContent = "Instalación, reparación y mantenimiento para tu hogar o negocio.";
-            srv-title.textContent = "Servicios";
-            srv1.textContent = "Instalación de aire acondicionado";
-            srv1-t.textContent = "Equipos split, multisplit e inverter.";
-            srv2.textContent = "Instalación de estufas de leña y pellet";
-            srv2-t.textContent = "Montaje profesional y seguro de estufas y hogares.";
-            srv3.textContent = "Climatización comercial";
-            srv3-t.textContent = "Soluciones para locales, oficinas y hostelería.";
-            about-title.textContent = "¿Por qué elegirnos?";
-            about-list.innerHTML = `
-                <li>Trabajo limpio y profesional</li>
-                <li>Respuesta rápida</li>
-                <li>Experiencia en instalaciones y mantenimiento</li>
-                <li>Seriedad y responsabilidad</li>
-            `;
-        } else {
-            hero-title.textContent = "Professional HVAC Solutions";
-            hero-sub.textContent = "Installation, repair and maintenance for homes and businesses.";
-            srv-title.textContent = "Services";
-            srv1.textContent = "Air conditioning installation";
-            srv1-t.textContent = "Split, multisplit and inverter units.";
-            srv2.textContent = "Wood and pellet stove installation";
-            srv2-t.textContent = "Professional and safe installation of stoves and fireplaces.";
-            srv3.textContent = "Commercial HVAC";
-            srv3-t.textContent = "Solutions for shops, offices and hospitality.";
-            about-title.textContent = "Why choose us?";
-            about-list.innerHTML = `
-                <li>Clean and professional work</li>
-                <li>Fast response</li>
-                <li>Experience in installation and maintenance</li>
-                <li>Reliability and responsibility</li>
-            `;
-        }
+   <script>
+  const textos = {
+    es: {
+      heroTitle: "Soluciones profesionales de climatización",
+      heroSub: "Instalación, reparación y mantenimiento para tu hogar o negocio.",
+      srvTitle: "Servicios",
+      srv1: "Instalación de aire acondicionado",
+      srv1t: "Equipos split, multisplit e inverter.",
+      srv2: "Instalación de estufas de leña y pellet",
+      srv2t: "Montaje profesional y seguro de estufas y hogares.",
+      srv3: "Climatización comercial",
+      srv3t: "Soluciones para locales, oficinas y hostelería.",
+      aboutTitle: "¿Por qué elegirnos?",
+      aboutList: `
+        <li>Trabajo limpio y profesional</li>
+        <li>Respuesta rápida</li>
+        <li>Experiencia en instalaciones y mantenimiento</li>
+        <li>Seriedad y responsabilidad</li>
+      `
+    },
+    en: {
+      heroTitle: "Professional HVAC solutions",
+      heroSub: "Installation, repair and maintenance for homes and businesses.",
+      srvTitle: "Services",
+      srv1: "Air conditioning installation",
+      srv1t: "Split, multisplit and inverter units.",
+      srv2: "Wood and pellet stove installation",
+      srv2t: "Professional and safe installation of stoves and fireplaces.",
+      srv3: "Commercial HVAC",
+      srv3t: "Solutions for shops, offices and hospitality.",
+      aboutTitle: "Why choose us?",
+      aboutList: `
+        <li>Clean and professional work</li>
+        <li>Fast response</li>
+        <li>Experience in installation and maintenance</li>
+        <li>Reliability and responsibility</li>
+      `
     }
+  };
+
+  let currentLang = "es";
+
+  function aplicarIdioma(lang) {
+    const t = textos[lang];
+    document.documentElement.lang = lang;
+
+    document.getElementById("hero-title").textContent = t.heroTitle;
+    document.getElementById("hero-sub").textContent = t.heroSub;
+
+    document.getElementById("srv-title").textContent = t.srvTitle;
+    document.getElementById("srv1").textContent = t.srv1;
+    document.getElementById("srv1-t").textContent = t.srv1t;
+    document.getElementById("srv2").textContent = t.srv2;
+    document.getElementById("srv2-t").textContent = t.srv2t;
+    document.getElementById("srv3").textContent = t.srv3;
+    document.getElementById("srv3-t").textContent = t.srv3t;
+
+    document.getElementById("about-title").textContent = t.aboutTitle;
+    document.getElementById("about-list").innerHTML = t.aboutList;
+  }
+
+  function toggleLang() {
+    currentLang = currentLang === "es" ? "en" : "es";
+    aplicarIdioma(currentLang);
+  }
+
+  // Aplicar español al cargar
+  aplicarIdioma("es");
 </script>
 
 </body>
 </html>
+
