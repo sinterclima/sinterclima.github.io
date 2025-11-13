@@ -583,18 +583,29 @@
 
       <div class="contact-grid">
         <div class="contact-card">
-          <form onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Te contactaremos en breve.');">
-            <label for="nombre" data-i18n="contact.form.name">Nombre</label>
-            <input id="nombre" type="text" />
+          <form action="https://formsubmit.co/sinterclima@gmail.com" method="POST">
+  <!-- Opciones ocultas -->
+  <input type="hidden" name="_subject" value="Nueva consulta desde la web SINTER">
+  <input type="hidden" name="_captcha" value="false">
 
-            <label for="telefono" data-i18n="contact.form.phone">Teléfono</label>
-            <input id="telefono" type="tel" />
+  <!-- Cuando envíen el formulario, volverá a tu nueva web -->
+  <input type="hidden" name="_next" value="https://sinterclima.github.io/#contacto">
 
-            <label for="mensaje" data-i18n="contact.form.message">Mensaje</label>
-            <textarea id="mensaje"></textarea>
+  <label for="nombre">Nombre</label>
+  <input type="text" id="nombre" name="nombre" required>
 
-            <button type="submit" class="btn-form" data-i18n="contact.form.send">Enviar consulta</button>
-          </form>
+  <label for="telefono">Teléfono</label>
+  <input type="tel" id="telefono" name="telefono" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="mensaje">Mensaje</label>
+  <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+  <button type="submit">Enviar consulta</button>
+</form>
+
         </div>
         <div class="map-card">
           <iframe
@@ -749,4 +760,5 @@
 
 </body>
 </html>
+
 
