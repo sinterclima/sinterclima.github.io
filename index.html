@@ -1,286 +1,573 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SINTER – Instalaciones Térmicas</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SINTER – Instalaciones Térmicas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-main: #0a3a78;
+      --blue-hero: #0c478f;
+      --red: #e42527;
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 18px;
+      --shadow-soft: 0 12px 30px rgba(15,23,42,.12);
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
+    * { box-sizing: border-box; }
     body {
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background-color: #f4f8ff;
-        color: #0d1b2a;
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #ffffff;
+      color: var(--text-main);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
 
     /* HEADER */
     header {
-        background: linear-gradient(90deg, #0a3a78, #0d4d98);
-        color: white;
-        padding: 15px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(148,163,184,.3);
+      box-shadow: 0 4px 12px rgba(15,23,42,.06);
     }
-
-    header img {
-        height: 70px;
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      gap: 18px;
     }
-
-    nav a {
-        color: white;
-        text-decoration: none;
-        margin-left: 30px;
-        font-weight: 500;
-        transition: 0.2s;
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-
-    nav a:hover {
-        opacity: 0.7;
+    .nav-logo img {
+      height: 68px;
     }
-
-    #lang-btn {
-        margin-left: 30px;
-        padding: 6px 14px;
-        border-radius: 8px;
-        background: white;
-        color: #0d1b2a;
-        font-weight: 600;
-        cursor: pointer;
-        border: none;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 14px;
+      color: #111827;
+    }
+    .nav-links a {
+      padding: 6px 8px;
+      border-radius: 999px;
+      transition: background .18s;
+    }
+    .nav-links a:hover {
+      background: rgba(148,163,184,.15);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-nav {
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .btn-nav:hover {
+      background: #f9fafb;
+    }
+    .btn-lang {
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      border: none;
+      background: #0f172a;
+      color: #f9fafb;
+      cursor: pointer;
+      font-weight: 600;
     }
 
     /* HERO */
+    .hero-wrap {
+      background: linear-gradient(160deg, var(--blue-main), var(--blue-hero));
+      color: #f9fafb;
+      padding: 70px 0 60px;
+    }
     .hero {
-        background: linear-gradient(180deg, #0a3a78, #0d4d98);
-        padding: 120px 40px;
-        text-align: left;
-        color: white;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 32px;
+      align-items: center;
     }
-
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .chip {
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(248,250,252,.7);
+      background: rgba(15,23,42,.25);
+    }
     .hero h1 {
-        font-size: 48px;
-        font-weight: 800;
-        margin-bottom: 10px;
+      margin: 0 0 10px;
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 800;
+    }
+    .hero p {
+      margin: 0;
+      font-size: 16px;
+      color: #e5e7eb;
+    }
+    .hero-ctas {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .btn-primary {
+      background: #f9fafb;
+      color: var(--blue-main);
+      box-shadow: 0 12px 30px rgba(15,23,42,.45);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(15,23,42,.55);
+    }
+    .btn-secondary {
+      background: transparent;
+      border-color: rgba(226,232,240,.75);
+      color: #e5e7eb;
+    }
+    .btn-secondary:hover {
+      background: rgba(15,23,42,.35);
+    }
+    .hero-meta {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #d1d5db;
+    }
+    .hero-meta a {
+      color: #e5e7eb;
+      text-decoration: underline;
     }
 
-    .hero p {
-        font-size: 20px;
-        opacity: 0.9;
+    .hero-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 14px;
+      box-shadow: 0 20px 50px rgba(15,23,42,.6);
+    }
+    .hero-image {
+      border-radius: 22px;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* SECTIONS GENERAL */
+    section {
+      padding: 60px 0;
+    }
+    h2.section-title {
+      font-size: 28px;
+      margin: 0 0 6px;
+    }
+    .section-sub {
+      margin: 0 0 26px;
+      font-size: 15px;
+      color: var(--text-muted);
     }
 
     /* SERVICES */
-    .services {
-        padding: 70px 40px;
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
     }
-
-    .services h2 {
-        font-size: 32px;
-        font-weight: 800;
-        margin-bottom: 40px;
+    .service-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px 18px 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(15,23,42,.06);
+      transition: transform .2s, box-shadow .2s;
     }
-
-    .card-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-        gap: 25px;
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(15,23,42,.12);
     }
-
-    .card {
-        background: white;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        transition: transform 0.25s ease, box-shadow 0.25s;
+    .service-title {
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #111827;
     }
-
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.18);
-    }
-
-    .card img {
-        width: 100%;
-        border-radius: 12px;
-        margin-bottom: 12px;
+    .service-text {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-muted);
     }
 
     /* ABOUT */
-    .about {
-        background: #0a3a78;
-        color: white;
-        padding: 70px 40px;
+    .about-wrap {
+      background: var(--bg);
+    }
+    .about-card {
+      background: #0b2447;
+      color: #e5e7eb;
+      border-radius: var(--radius);
+      padding: 20px 22px 18px;
+      box-shadow: var(--shadow-soft);
+    }
+    .about-card ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      font-size: 14px;
+    }
+    .about-card li {
+      margin-bottom: 6px;
     }
 
-    .about h2 {
-        font-size: 32px;
-        font-weight: 800;
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 26px;
+      align-items: flex-start;
     }
-
-    #about-list li {
-        margin: 10px 0;
-        font-size: 18px;
+    .contact-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 35px rgba(15,23,42,.1);
+      font-size: 14px;
+      color: var(--text-muted);
     }
-
-    /* CONTACT SECTION */
-    .contact {
-        padding: 70px 40px;
+    .contact-card strong {
+      color: var(--text-main);
     }
-
-    iframe {
-        width: 100%;
-        height: 350px;
-        border: none;
-        border-radius: 12px;
-        margin-top: 15px;
-        box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+    .contact-card a {
+      color: var(--blue-main);
+      text-decoration: underline;
+    }
+    .map-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(15,23,42,.18);
+      border: 1px solid rgba(15,23,42,.25);
+    }
+    .map-card iframe {
+      width: 100%;
+      min-height: 260px;
+      border: 0;
+      display: block;
     }
 
     /* FOOTER */
     footer {
-        background: #0d1b2a;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        margin-top: 40px;
+      border-top: 1px solid rgba(148,163,184,.4);
+      padding: 18px 0 20px;
+      font-size: 13px;
+      color: #64748b;
     }
-</style>
-</head>
 
+    /* FLOAT WHATSAPP */
+    .float-wsp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #25d366;
+      color: #f9fafb;
+      padding: 10px 15px;
+      border-radius: 999px;
+      box-shadow: 0 16px 40px rgba(22,163,74,.65);
+      font-size: 13px;
+      font-weight: 700;
+      z-index: 60;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-card {
+        max-width: 420px;
+        margin: 18px auto 0;
+      }
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
 <body>
 
-<!-- HEADER -->
 <header>
-    <img src="logo-sinter.png" alt="SINTER Logo">
-    <nav>
-        <a href="#servicios">Servicios</a>
-        <a href="#about">Nosotros</a>
-        <a href="#contacto">Contacto</a>
-        <button id="lang-btn" onclick="toggleLang()">ES/EN</button>
+  <div class="container nav">
+    <div class="nav-logo">
+      <!-- Asegúrate de subir un archivo llamado EXACTAMENTE logo-sinter.png -->
+      <img src="logo-sinter.png" alt="SINTER Logo">
+    </div>
+    <nav class="nav-links">
+      <a href="#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
+      <a href="#contacto" data-i18n="nav.contact">Contacto</a>
     </nav>
+    <div class="nav-actions">
+      <a href="https://wa.me/34672938817" target="_blank" class="btn-nav">WhatsApp</a>
+      <a href="tel:+34672938817" class="btn-nav" data-i18n="cta.secondary">Llámanos</a>
+      <button class="btn-lang" id="langToggle">EN</button>
+    </div>
+  </div>
 </header>
 
 <!-- HERO -->
-<section class="hero">
-    <h1 id="hero-title">Soluciones profesionales de climatización</h1>
-    <p id="hero-sub">Instalación, reparación y mantenimiento para tu hogar o negocio.</p>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="servicios">
-    <h2 id="srv-title">Servicios</h2>
-
-    <div class="card-container">
-        <div class="card">
-            <img src="aire.png">
-            <h3 id="srv1">Instalación de aire acondicionado</h3>
-            <p id="srv1-t">Equipos split, multisplit e inverter.</p>
-        </div>
-
-        <div class="card">
-            <img src="estufa.png">
-            <h3 id="srv2">Instalación de estufas de leña y pellet</h3>
-            <p id="srv2-t">Montaje profesional y seguro de estufas y hogares.</p>
-        </div>
-
-        <div class="card">
-            <img src="compresor.png">
-            <h3 id="srv3">Climatización comercial</h3>
-            <p id="srv3-t">Soluciones para locales, oficinas y hostelería.</p>
-        </div>
+<div class="hero-wrap">
+  <div class="container hero">
+    <div>
+      <div class="hero-chips">
+        <span class="chip" data-i18n="hero.badge1">Empresa instaladora habilitada</span>
+        <span class="chip" data-i18n="hero.badge2">Garantía oficial</span>
+        <span class="chip" data-i18n="hero.badge3">Respuesta rápida</span>
+      </div>
+      <h1 id="hero-title" data-i18n="hero.title">Sistemas de aire acondicionado y calefacción</h1>
+      <p id="hero-sub" data-i18n="hero.subtitle">Instalación, mantenimiento y reparación para hogares y negocios en la Costa Blanca.</p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn btn-primary" data-i18n="cta.primary">Pide presupuesto</a>
+        <a href="tel:+34672938817" class="btn btn-secondary" data-i18n="cta.secondary">Llámanos</a>
+      </div>
+      <div class="hero-meta">
+        03509 – Finestrat, Alicante · <a href="mailto:sinterclima@gmail.com">sinterclima@gmail.com</a>
+      </div>
     </div>
-</section>
+    <div class="hero-card">
+      <div class="hero-image">
+        <!-- Usa tu foto del técnico / compresores con este nombre: hero-compresor.jpg -->
+        <img src="hero-compresor.jpg" alt="Técnico revisando unidades exteriores">
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-    <h2 id="about-title">¿Por qué elegirnos?</h2>
-    <ul id="about-list">
-        <li>Trabajo limpio y profesional</li>
-        <li>Respuesta rápida</li>
-        <li>Experiencia en instalaciones y mantenimiento</li>
-        <li>Seriedad y responsabilidad</li>
-    </ul>
-</section>
+<main>
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="container">
+      <h2 class="section-title" data-i18n="services.title">Servicios</h2>
+      <p class="section-sub" data-i18n="services.lead">Soluciones completas para tu hogar o negocio.</p>
 
-<!-- CONTACT -->
-<section class="contact" id="contacto">
-    <h2>Ubicación</h2>
+      <div class="services-grid">
+        <article class="service-card">
+          <h3 class="service-title" data-i18n="services.s1.title">Instalación de aire acondicionado</h3>
+          <p class="service-text" data-i18n="services.s1.text">Split, multisplit e inverter de primeras marcas.</p>
+        </article>
 
-    <iframe src="https://www.google.com/maps?q=Finestrat%2003509&output=embed"></iframe>
-</section>
+        <article class="service-card">
+          <h3 class="service-title" data-i18n="services.s2.title">Mantenimiento preventivo</h3>
+          <p class="service-text" data-i18n="services.s2.text">Plan anual para alargar la vida útil y ahorrar energía.</p>
+        </article>
+
+        <article class="service-card">
+          <h3 class="service-title" data-i18n="services.s3.title">Reparación y diagnóstico</h3>
+          <p class="service-text" data-i18n="services.s3.text">Atención rápida, repuestos originales y garantía.</p>
+        </article>
+
+        <article class="service-card">
+          <h3 class="service-title" data-i18n="services.s4.title">Instalación de estufas de leña y pellets</h3>
+          <p class="service-text" data-i18n="services.s4.text">Montaje profesional de estufas, chimeneas y hogares.</p>
+        </article>
+
+        <article class="service-card">
+          <h3 class="service-title" data-i18n="services.s5.title">Climatización comercial</h3>
+          <p class="service-text" data-i18n="services.s5.text">Locales, oficinas y hostelería con respuesta ágil.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros" class="about-wrap">
+    <div class="container">
+      <h2 class="section-title" data-i18n="about.title">¿Por qué elegirnos?</h2>
+      <p class="section-sub" data-i18n="about.lead">Nos encargamos de que tu instalación funcione bien desde el primer día.</p>
+      <div class="about-card">
+        <ul>
+          <li data-i18n="about.li1">Trabajo limpio y ordenado en cada instalación.</li>
+          <li data-i18n="about.li2">Atención cercana y tiempos de respuesta rápidos.</li>
+          <li data-i18n="about.li3">Experiencia en instalaciones residenciales y comerciales.</li>
+          <li data-i18n="about.li4">Seriedad y responsabilidad.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="container">
+      <h2 class="section-title" data-i18n="contact.title">Contacto</h2>
+      <p class="section-sub" data-i18n="contact.lead">Cuéntanos qué necesitas y te responderemos lo antes posible.</p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <p><strong>SINTER – Instalaciones Térmicas</strong></p>
+          <p>03509 – Finestrat, Alicante</p>
+          <p><strong>Tel:</strong> <a href="tel:+34672938817">672 938 817</a></p>
+          <p><strong>Email:</strong> <a href="mailto:sinterclima@gmail.com">sinterclima@gmail.com</a></p>
+          <p><strong>WhatsApp:</strong> <a href="https://wa.me/34672938817" target="_blank">Escríbenos por WhatsApp</a></p>
+          <p data-i18n="contact.note">Trabajamos en Finestrat, Benidorm y alrededores de la Costa Blanca.</p>
+        </div>
+        <div class="map-card">
+          <iframe
+            loading="lazy"
+            src="https://www.google.com/maps?q=03509%20Finestrat%2C%20Alicante&z=13&output=embed"
+            title="Ubicación SINTER en Finestrat, Alicante"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
-    © 2025 SINTER – Instalaciones Térmicas · Todos los derechos reservados
+  <div class="container">
+    © <span id="year"></span> SINTER. <span data-i18n="footer.rights">Todos los derechos reservados.</span>
+  </div>
 </footer>
 
-<!-- LANGUAGE SWITCHER -->
+<a class="float-wsp" href="https://wa.me/34672938817" target="_blank" rel="noreferrer">WhatsApp</a>
+
 <script>
-const textos = {
+  const translations = {
     es: {
-        heroTitle: "Soluciones profesionales de climatización",
-        heroSub: "Instalación, reparación y mantenimiento para tu hogar o negocio.",
-        srvTitle: "Servicios",
-        srv1: "Instalación de aire acondicionado",
-        srv1t: "Equipos split, multisplit e inverter.",
-        srv2: "Instalación de estufas de leña y pellet",
-        srv2t: "Montaje profesional y seguro de estufas y hogares.",
-        srv3: "Climatización comercial",
-        srv3t: "Soluciones para locales, oficinas y hostelería.",
-        aboutTitle: "¿Por qué elegirnos?",
-        aboutList: `
-            <li>Trabajo limpio y profesional</li>
-            <li>Respuesta rápida</li>
-            <li>Experiencia en instalaciones y mantenimiento</li>
-            <li>Seriedad y responsabilidad</li>`
+      "nav.services": "Servicios",
+      "nav.about": "Nosotros",
+      "nav.contact": "Contacto",
+      "hero.badge1": "Empresa instaladora habilitada",
+      "hero.badge2": "Garantía oficial",
+      "hero.badge3": "Respuesta rápida",
+      "hero.title": "Sistemas de aire acondicionado y calefacción",
+      "hero.subtitle": "Instalación, mantenimiento y reparación para hogares y negocios en la Costa Blanca.",
+      "cta.primary": "Pide presupuesto",
+      "cta.secondary": "Llámanos",
+      "services.title": "Servicios",
+      "services.lead": "Soluciones completas para tu hogar o negocio.",
+      "services.s1.title": "Instalación de aire acondicionado",
+      "services.s1.text": "Split, multisplit e inverter de primeras marcas.",
+      "services.s2.title": "Mantenimiento preventivo",
+      "services.s2.text": "Plan anual para alargar la vida útil y ahorrar energía.",
+      "services.s3.title": "Reparación y diagnóstico",
+      "services.s3.text": "Atención rápida, repuestos originales y garantía.",
+      "services.s4.title": "Instalación de estufas de leña y pellets",
+      "services.s4.text": "Montaje profesional de estufas, chimeneas y hogares.",
+      "services.s5.title": "Climatización comercial",
+      "services.s5.text": "Locales, oficinas y hostelería con respuesta ágil.",
+      "about.title": "¿Por qué elegirnos?",
+      "about.lead": "Nos encargamos de que tu instalación funcione bien desde el primer día.",
+      "about.li1": "Trabajo limpio y ordenado en cada instalación.",
+      "about.li2": "Atención cercana y tiempos de respuesta rápidos.",
+      "about.li3": "Experiencia en instalaciones residenciales y comerciales.",
+      "about.li4": "Seriedad y responsabilidad.",
+      "contact.title": "Contacto",
+      "contact.lead": "Cuéntanos qué necesitas y te responderemos lo antes posible.",
+      "contact.note": "Trabajamos en Finestrat, Benidorm y alrededores de la Costa Blanca.",
+      "footer.rights": "Todos los derechos reservados."
     },
     en: {
-        heroTitle: "Professional HVAC solutions",
-        heroSub: "Installation, repair and maintenance for homes and businesses.",
-        srvTitle: "Services",
-        srv1: "Air conditioning installation",
-        srv1t: "Split, multisplit and inverter units.",
-        srv2: "Wood and pellet stove installation",
-        srv2t: "Safe and professional installation of stoves and fireplaces.",
-        srv3: "Commercial HVAC",
-        srv3t: "Solutions for shops, offices and hospitality.",
-        aboutTitle: "Why choose us?",
-        aboutList: `
-            <li>Clean and professional work</li>
-            <li>Fast response</li>
-            <li>Experience in installation and maintenance</li>
-            <li>Reliability and responsibility</li>`
+      "nav.services": "Services",
+      "nav.about": "About",
+      "nav.contact": "Contact",
+      "hero.badge1": "Certified installer",
+      "hero.badge2": "Official warranty",
+      "hero.badge3": "Fast response",
+      "hero.title": "Air conditioning and heating systems",
+      "hero.subtitle": "Installation, maintenance and repairs for homes and businesses on the Costa Blanca.",
+      "cta.primary": "Get a quote",
+      "cta.secondary": "Call us",
+      "services.title": "Services",
+      "services.lead": "Complete solutions for your home or business.",
+      "services.s1.title": "Air conditioning installation",
+      "services.s1.text": "Split, multisplit and inverter units from top brands.",
+      "services.s2.title": "Preventive maintenance",
+      "services.s2.text": "Annual plans to extend equipment life and save energy.",
+      "services.s3.title": "Repairs and diagnostics",
+      "services.s3.text": "Fast response, genuine parts and warranty.",
+      "services.s4.title": "Wood and pellet stove installation",
+      "services.s4.text": "Professional installation of stoves, fireplaces and hearths.",
+      "services.s5.title": "Commercial HVAC",
+      "services.s5.text": "Solutions for shops, offices and hospitality with agile support.",
+      "about.title": "Why choose us?",
+      "about.lead": "We make sure your installation works well from day one.",
+      "about.li1": "Clean and tidy work on every installation.",
+      "about.li2": "Friendly service and fast response times.",
+      "about.li3": "Experience in residential and commercial projects.",
+      "about.li4": "Reliability and responsibility.",
+      "contact.title": "Contact",
+      "contact.lead": "Tell us what you need and we will get back to you as soon as possible.",
+      "contact.note": "We work in Finestrat, Benidorm and the surrounding Costa Blanca area.",
+      "footer.rights": "All rights reserved."
     }
-};
+  };
 
-let lang = "es";
+  let currentLang = "es";
 
-function toggleLang() {
-    lang = lang === "es" ? "en" : "es";
-    applyLang();
-}
+  function applyLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    const els = document.querySelectorAll("[data-i18n]");
+    els.forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (translations[lang][key]) {
+        el.textContent = translations[lang][key];
+      }
+    });
+    document.getElementById("langToggle").textContent = lang === "es" ? "EN" : "ES";
+  }
 
-function applyLang() {
-    const t = textos[lang];
-    document.getElementById("hero-title").textContent = t.heroTitle;
-    document.getElementById("hero-sub").textContent = t.heroSub;
-    document.getElementById("srv-title").textContent = t.srvTitle;
-    document.getElementById("srv1").textContent = t.srv1;
-    document.getElementById("srv1-t").textContent = t.srv1t;
-    document.getElementById("srv2").textContent = t.srv2;
-    document.getElementById("srv2-t").textContent = t.srv2t;
-    document.getElementById("srv3").textContent = t.srv3;
-    document.getElementById("srv3-t").textContent = t.srv3t;
-    document.getElementById("about-title").textContent = t.aboutTitle;
-    document.getElementById("about-list").innerHTML = t.aboutList;
-}
+  document.getElementById("langToggle").addEventListener("click", () => {
+    applyLang(currentLang === "es" ? "en" : "es");
+  });
 
-applyLang();
+  document.getElementById("year").textContent = new Date().getFullYear();
+  applyLang("es");
 </script>
 
 </body>
