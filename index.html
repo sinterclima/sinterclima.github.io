@@ -616,20 +616,30 @@
   <!-- Opciones ocultas -->
   <input type="hidden" name="_subject" value="Nueva consulta desde la web SINTER">
   <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
 
-  <label for="nombre">Nombre</label>
-  <input type="text" id="nombre" name="nombre" required>
+  <label for="nombre" data-i18n="contact.form.nameLabel">Nombre</label>
+  <input type="text" id="nombre" name="nombre" required autocomplete="name" />
 
-  <label for="telefono">Teléfono</label>
-  <input type="tel" id="telefono" name="telefono" required>
+  <label for="telefono" data-i18n="contact.form.phoneLabel">Teléfono</label>
+  <input type="tel" id="telefono" name="telefono" required autocomplete="tel"
+         placeholder="Ej: 672 938 817" />
 
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" required>
+  <label for="email" data-i18n="contact.form.emailLabel">Email (opcional)</label>
+  <input type="email" id="email" name="email" autocomplete="email"
+         placeholder="Ej: nombre@email.com" />
 
-  <label for="mensaje">Mensaje</label>
-  <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+  <label for="mensaje" data-i18n="contact.form.messageLabel">Mensaje</label>
+  <textarea id="mensaje" name="mensaje" rows="4" required
+            data-i18n-placeholder="contact.form.messagePh"
+            placeholder="Ej: instalación de aire acondicionado en piso/local, zona, cuándo lo necesitas…"></textarea>
 
-  <button type="submit" class="btn-form">Enviar consulta</button>
+  <div style="font-size:12px;color:var(--text-muted);margin:-6px 0 10px;" data-i18n="contact.form.trust">
+    Respondemos normalmente en menos de 24 h.
+  </div>
+
+  <button type="submit" class="btn-form" data-i18n="contact.form.sendBtn">Enviar y recibir presupuesto</button>
+
 </form>
 
 
@@ -794,6 +804,7 @@ document.getElementById("langEn").addEventListener("click", () => {
 
 </body>
 </html>
+
 
 
 
