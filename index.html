@@ -802,6 +802,13 @@
         el.textContent = translations[lang][key];
       }
     });
+      // placeholders traducibles
+  const phEls = document.querySelectorAll("[data-i18n-placeholder]");
+  phEls.forEach(el => {
+    const k = el.getAttribute("data-i18n-placeholder");
+    if (translations[lang][k]) el.setAttribute("placeholder", translations[lang][k]);
+  });
+
     document.getElementById("langToggle").textContent = lang === "es" ? "EN" : "ES";
   }
 
@@ -820,6 +827,7 @@ document.getElementById("langEn").addEventListener("click", () => {
 
 </body>
 </html>
+
 
 
 
